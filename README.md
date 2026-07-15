@@ -144,7 +144,7 @@ This project is released under the MIT License.
 
 ## Author
 
-**Shreya Kabdaula**
+**Shreya Kabodula**
 
 MSc Biotechnology  
 Vellore Institute of Technology (VIT), India
