@@ -89,7 +89,6 @@ Biomaterials-Data-Analysis-R/
 ├── 04_Drug_Loading_Analysis/
 │
 ├── README.md
-├── LICENSE
 └── .gitignore
 ```
 
