@@ -197,19 +197,25 @@ swelling_anova_results <- data.frame(
   Sum_sq = round(swelling_anova_summary[[1]][,"Sum Sq"],2),
   Mean_sq = round(swelling_anova_summary[[1]][,"Mean Sq"],2),
   F_value = round(swelling_anova_summary[[1]][, "F value"],3),
-  p_value = swelling_anova_summary[[1]][,"Pr(>F)"],
-  Significance = ifelse(
-    swelling_anova_results$p_value < 0.0001, "****",
-    ifelse(swelling_anova_results$p_value < 0.001, "***",
-           ifelse(swelling_anova_results$p_value < 0.01, "**",
-                  ifelse(swelling_anova_results$p_value < 0.05, "*", "ns")))),
-  Interpretation = ifelse(
+  p_value = swelling_anova_summary[[1]][,"Pr(>F)"])
+  
+swelling_anova_results$Significance <- ifelse(
+  is.na(swelling_anova_results$p_value), NA,
+  ifelse(swelling_anova_results$p_value < 0.0001, "****",
+         ifelse(swelling_anova_results$p_value < 0.001, "***",
+                ifelse(swelling_anova_results$p_value < 0.01, "**",
+                       ifelse(swelling_anova_results$p_value < 0.05, "*", "ns")
+                )
+         )
+  ))
+swelling_anova_results$Interpretation <- ifelse(
+  is.na(swelling_anova_results$p_value), NA,
+  ifelse(
     swelling_anova_results$p_value < 0.05,
     "Significant",
     "Not Significant"
   )
-  )
-
+)
 #===================================Export Results==============================
 # Export processed data and statistical summaries to Excel.
 write_xlsx(
